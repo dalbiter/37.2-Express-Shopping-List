@@ -37,6 +37,7 @@ router.patch("/:name", (req, res, next) => {
         const foundItem = items.find(item => item.name === req.params.name.toLowerCase())
         if(foundItem === undefined) throw new ExpressError("Item not found", 404)
         foundItem.name = req.body.name.toLowerCase()
+        foundItem.price = req.body.price
         res.json({ item: foundItem })
     } catch(e) {
         next(e)
